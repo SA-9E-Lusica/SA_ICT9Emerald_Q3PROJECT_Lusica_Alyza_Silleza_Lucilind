@@ -13,31 +13,49 @@
   #station-label {background-color: black; color: white; padding: 5px; display: inline-block;}
   label {width: 100%; max-width: 320px; margin-top: 5px; display: block;}
   select {width: 100%; max-width: 320px; background-color: #8ff2f7;}
-  #DisplayAns {font-size: 40px; font-weight: bold; color: white; background: #007bff; padding: 10px; display: inline-block;}
+  #DisplayAns {font-size: 40px; font-weight: bold; color: white; background: #7941bf; padding: 10px; display: inline-block;}
   #logo {width: 60px; height: 40px;}
-  .fare-box {background-color: #04175c; color: white; padding: 20px; border-radius: 10px;}
+  .fare-box {background-color: #36185c; color: white; padding: 20px; border-radius: 10px;}
+  .feedback-box {background-color: #36185c; color: white; padding: 20px; border-radius: 10px; text-align: center;} 
 </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #36185c;">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #36185c;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img id="logo" src="logo.png" alt="G&C Transit Logo"> G&C Transit</a>
+            <a class="navbar-brand" href="index.html"><img id="logo" src="logo.png" alt="G&C Transit">G&C Transit</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="page2.html">Transit Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="page3.html">Help</a></li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="text" placeholder="Search...">
+                    <button class="btn btn-warning" type="submit">Search</button>
+                </form>
+            </div>
         </div>
     </nav>
 
-    <div class="container my-5 text-center">
-        <h1>LRT Line 2</h1>
-        <hr>
-        <img id="map" src="map.png" alt="Train Map">
-        <hr>
-      <div class="col-md-4" >
-          <div class="col-md-12 form-group" id="station">
-          
-          <span id="station-label"><label for="leavingFrom">Leaving From:</label></span>
+<br><br>
+
+<div class="container my-5">
+  <div class="feedback-box">
+    <h1 class="text-center">LRT Line 2</h1>
+  </div>
+    <hr>
+    <img id="map" src="map.png" alt="Train Map" class="d-block mx-auto">
+    <hr>
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6 text-center">
+            <span id="station-label"><label for="leavingFrom">Leaving From:</label></span>
             <br>
-            <center>
-              <select class="form-control" id="leavingFrom">
+            <select class="form-control mx-auto" id="leavingFrom">
                 <option value="0">Choose a station...</option>
                 <option value="0">Santolan</option>
                 <option value="0">Katipunan</option>
@@ -50,11 +68,13 @@
                 <option value="11">Pureza</option>
                 <option value="11">Legarda</option>
                 <option value="11">Recto</option>
-              </select>
+            </select>
+
             <br>
-          <span id="station-label"><label for="goingTo">Going To:</label></span>
+
+            <span id="station-label"><label for="goingTo">Going To:</label></span>
             <br>
-              <select class="form-control" id="goingTo">
+            <select class="form-control mx-auto" id="goingTo">
                 <option value="0">Choose a station...</option>
                 <option value="0">Santolan</option>
                 <option value="0">Katipunan</option>
@@ -67,66 +87,60 @@
                 <option value="11">Pureza</option>
                 <option value="11">Legarda</option>
                 <option value="11">Recto</option>
-              </select>
-
-              <br>
-
-                    <button onclick="calculateFare()" class="btn btn-outline-success" id="compute">Regular Fare</button>
-              <button onclick="discountFare()" class="btn btn-outline-primary" id="compute">Discounted Fare</button>
-             </center>
-
-            </div>
-            </div>
+            </select>
 
             <br>
 
-            <div class="col-md-4 fare-box">
+            <button onclick="calculateFare()" class="btn btn-outline-success">Regular Fare</button>
+            <button onclick="discountFare()" class="btn btn-outline-primary">Discounted Fare</button>
+        </div>
+
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="fare-box text-center">
                 <h2>Ticket Price:</h2>
                 <p id="DisplayAns">₱0.00</p>
             </div>
         </div>
     </div>
+</div>
        
 <script>  
-        document.write("<h2>Ticket Price:</h2>");
-
-        document.addEventListener("DOMContentLoaded", function() {
-            let leavingSelect = document.getElementById("leavingFrom");
-            let goingSelect = document.getElementById("goingTo");
+  document.addEventListener("DOMContentLoaded", function() {
+     let leavingSelect = docuetElementById("leavingFrom");
+     let goingSelect = document.getElementById("goingTo");
             
-            stations.forEach((station, index) => {
-                let option1 = new Option(station, index + 1);
-                let option2 = new Option(station, index + 1);
-                leavingSelect.add(option1);
-                goingSelect.add(option2);
+  stations.forEach((station, index) => {
+      let option1 = new Option(station, index + 1);
+      let option2 = new Option(station, index + 1);
+        leavingSelect.add(option1);
+        goingSelect.add(option2);
             });
         });
 
-        function calculateFare() {
-            let leaving = parseInt(document.getElementById("leavingFrom").value);
-            let going = parseInt(document.getElementById("goingTo").value);
+    function calculateFare() {
+       let leaving = parseInt(document.getElementById("leavingFrom").value);
+       let going = parseInt(document.getElementById("goingTo").value);
             
-            if (isNaN(leaving) || isNaN(going) || leaving === going) {
-                document.getElementById("DisplayAns").innerHTML = "Invalid Selection";
-                return;
+       if (isNaN(leaving) || isNaN(going) || leaving === going) {
+       document.getElementById("DisplayAns").innerHTML = "Invalid Selection"; return;
             }
             
-            let baseFare = 13;
-            let additionalFare = Math.abs(going - leaving) * 2;
-            let totalFare = baseFare + additionalFare;
+       let baseFare = 13;
+       let additionalFare = Math.abs(going - leaving) * 2;
+       let totalFare = baseFare + additionalFare;
             
-            document.getElementById("DisplayAns").innerHTML = `₱${totalFare}.00`;
+    document.getElementById("DisplayAns").innerHTML = `₱${totalFare}.00`;
         }
         
-        function discountFare() {
+    function discountFare() {
             calculateFare();
-            let fareText = document.getElementById("DisplayAns").innerHTML;
-            if (fareText !== "Invalid Selection") {
-                let fare = parseFloat(fareText.replace("₱", "")) * 0.8;
-                document.getElementById("DisplayAns").innerHTML = `₱${fare.toFixed(2)}`;
+       let fareText = document.getElementById("DisplayAns").innerHTML;
+       if (fareText !== "Invalid Selection") {
+       let fare = parseFloat(fareText.replace("₱", "")) * 0.8;
+    document.getElementById("DisplayAns").innerHTML = `₱${fare.toFixed(2)}`;
             }
         }
-    </script>
+</script>
 
 </body>
 </html>
