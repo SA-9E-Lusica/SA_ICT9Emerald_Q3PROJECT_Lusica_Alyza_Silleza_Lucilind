@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
 <style>
-  body {font-family: Rockwell; background-color: #f8f9fa; position: relative; width: 100%; display: block;}
+  body {font-family: Rockwell; background-color: #f8f9fa; position: relative; width: 100%; display: block; background-image: url(bg.jpg); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;}
   #map {height: 400px; width: 100%; max-width: 600px; display: block; margin: 20px auto;}
   #station-label {background-color: black; color: white; padding: 5px; display: inline-block;}
   label {width: 100%; max-width: 320px; margin-top: 5px; display: block;}
@@ -50,56 +50,54 @@
     <img id="map" src="map.png" alt="Train Map" class="d-block mx-auto">
     <hr>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center align-items-center">
+    <div class="col-md-5 d-flex flex-column text-center">
+        <span id="station-label"><label for="leavingFrom">Leaving From:</label></span>
+        <select class="form-control mx-auto" id="leavingFrom">
+            <option value="0">Choose a station...</option>
+            <option value="0">Santolan</option>
+            <option value="0">Katipunan</option>
+            <option value="0">Anonas</option>
+            <option value="3">Cubao (Araneta Center)</option>
+            <option value="3">Belmonte (Betty Go)</option>
+            <option value="7">Gilmore</option>
+            <option value="7">J.Ruiz</option>
+            <option value="7">V.Mapa</option>
+            <option value="11">Pureza</option>
+            <option value="11">Legarda</option>
+            <option value="11">Recto</option>
+        </select>
 
-        <div class="col-md-6 text-center">
-            <span id="station-label"><label for="leavingFrom">Leaving From:</label></span>
-            <br>
-            <select class="form-control mx-auto" id="leavingFrom">
-                <option value="0">Choose a station...</option>
-                <option value="0">Santolan</option>
-                <option value="0">Katipunan</option>
-                <option value="0">Anonas</option>
-                <option value="3">Cubao (Araneta Center)</option>
-                <option value="3">Belmonte (Betty Go)</option>
-                <option value="7">Gilmore</option>
-                <option value="7">J.Ruiz</option>
-                <option value="7">V.Mapa</option>
-                <option value="11">Pureza</option>
-                <option value="11">Legarda</option>
-                <option value="11">Recto</option>
-            </select>
+        <br>
 
-            <br>
+        <span id="station-label"><label for="goingTo">Going To:</label></span>
+        <select class="form-control mx-auto" id="goingTo">
+            <option value="0">Choose a station...</option>
+            <option value="0">Santolan</option>
+            <option value="0">Katipunan</option>
+            <option value="0">Anonas</option>
+            <option value="3">Cubao (Araneta Center)</option>
+            <option value="3">Belmonte (Betty Go)</option>
+            <option value="7">Gilmore</option>
+            <option value="7">J.Ruiz</option>
+            <option value="7">V.Mapa</option>
+            <option value="11">Pureza</option>
+            <option value="11">Legarda</option>
+            <option value="11">Recto</option>
+        </select>
 
-            <span id="station-label"><label for="goingTo">Going To:</label></span>
-            <br>
-            <select class="form-control mx-auto" id="goingTo">
-                <option value="0">Choose a station...</option>
-                <option value="0">Santolan</option>
-                <option value="0">Katipunan</option>
-                <option value="0">Anonas</option>
-                <option value="3">Cubao (Araneta Center)</option>
-                <option value="3">Belmonte (Betty Go)</option>
-                <option value="7">Gilmore</option>
-                <option value="7">J.Ruiz</option>
-                <option value="7">V.Mapa</option>
-                <option value="11">Pureza</option>
-                <option value="11">Legarda</option>
-                <option value="11">Recto</option>
-            </select>
+        <br>
 
-            <br>
-
-            <button onclick="calculateFare()" class="btn btn-outline-success">Regular Fare</button>
-            <button onclick="discountFare()" class="btn btn-outline-primary">Discounted Fare</button>
+        <div class="d-flex justify-content-center">
+            <button onclick="calculateFare()" class="btn btn-outline-success mx-2">Regular Fare</button>
+            <button onclick="discountFare()" class="btn btn-outline-primary mx-2">Discounted Fare</button>
         </div>
+    </div>
 
-        <div class="col-md-6 d-flex align-items-center justify-content-center">
-            <div class="fare-box text-center">
-                <h2>Ticket Price:</h2>
-                <p id="DisplayAns">₱0.00</p>
-            </div>
+    <div class="col-md-5 d-flex align-items-center justify-content-center">
+        <div class="fare-box text-center">
+            <h2>Ticket Price:</h2>
+            <p id="DisplayAns">₱0.00</p>
         </div>
     </div>
 </div>
