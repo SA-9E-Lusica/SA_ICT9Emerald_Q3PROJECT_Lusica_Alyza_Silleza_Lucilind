@@ -1,80 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Q3 Project</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train Fare Guide</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
 <style>
- body{font-family: Rockwell;}
- #train{height: 200px; width: 400px;}
- #map{height: 600px; width: 600px;}
- #station, #map{font-size: 35px; text-align: center;}
- #station-label{background-color: black; color: white}
- label, #leavingFrom, #goingTo{width: 320px;}
- #leavingFrom, #goingTo, #comment{background-color: #8ff2f7;}
- #card{width: 500px; height: 400px;}
- #trainsched{width: 500px; height: 600px;}
- #DisplayAns{font-size: 200px; color: white;}
- #logo{width: 60px; height: 40px;}
- .fa-facebook, .fa-instagram {width: 35px;padding: 5px; color: white; background-color: black;}
- #compute{width: 150px; font-size: 14px;}
- btn{font-size: 100px;}
- a {text-color: white;}
+  body {font-family: Rockwell; background-color: #f8f9fa; position: relative; width: 100%; display: block;}
+  #map {height: 400px; width: 100%; max-width: 600px; display: block; margin: 20px auto;}
+  #station-label {background-color: black; color: white; padding: 5px; display: inline-block;}
+  label {width: 100%; max-width: 320px; margin-top: 5px; display: block;}
+  select {width: 100%; max-width: 320px; background-color: #8ff2f7;}
+  #DisplayAns {font-size: 40px; font-weight: bold; color: white; background: #007bff; padding: 10px; display: inline-block;}
+  #logo {width: 60px; height: 40px;}
+  .fare-box {background-color: #04175c; color: white; padding: 20px; border-radius: 10px;}
 </style>
-
 </head>
 
 <body>
-<nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #36185c; color: white;">
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #36185c;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img id="logo" src="logo.png" alt="G&C Transit Logo"> G&C Transit</a>
+        </div>
+    </nav>
 
-<div class="container-fluid">
-  <a class="navbar-brand" href="index.html"><img id="logo" src="logo.png">G&C Transit</a>
-
-  <div class="collapse navbar-collapse">
-    
-  <ul class="navbar-nav me-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="page2.html">Transit Schedule</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="page3.html">Help</a>
-    </li>
-    </ul>
-
-    <form class="d-flex" action="index.html">
-            <input class="form-control" type="text" placeholder="search…">
-            <button class="btn btn-warning" type="button">Search</button>
-    </form>
-    </div>
-</div>
-</nav>
-
-    <br><br><br><br>
-   
-
-    <div class="row">
-      <center>
-      <div class="col-md-6" style="background-color: #36185c; color: white;">
-        <script>  
-        document.write("<h1>LRT Line 2</h1>");
-        </script>
-      </div>
-    </center>
-    </div>    
-      
-      <hr>
-      <br>
-
-    <div class="container-fluid" id="main">
-    <div class="row">
-      
-      <div class="col-md-4">
-        <center>
-          <img id="map" src="https://grit.ph/wp-content/uploads/2021/11/MRT-map.png">
-        </center>
-      </div>
- 
+    <div class="container my-5 text-center">
+        <h1>LRT Line 2</h1>
+        <hr>
+        <img id="map" src="map.png" alt="Train Map">
+        <hr>
       <div class="col-md-4" >
           <div class="col-md-12 form-group" id="station">
           
@@ -82,91 +38,95 @@
             <br>
             <center>
               <select class="form-control" id="leavingFrom">
-                <option value="15">Choose a station...</option>
-                <option value="15">Santolan</option>
-                <option value="15">Katipunan</option>
-                <option value="15">Anonas</option>
-                <option value="15">Cubao</option>
-                <option value="15">Belmonte</option>
-                <option value="15">Gilmore</option>
-                <option value="15">J.Ruiz</option>
-                <option value="15">V.Mapa</option>
-                <option value="15">Pureza</option>
-                <option value="15">Legarda</option>
-                <option value="15">Recto</option>
-
-
+                <option value="0">Choose a station...</option>
+                <option value="0">Santolan</option>
+                <option value="0">Katipunan</option>
+                <option value="0">Anonas</option>
+                <option value="3">Cubao (Araneta Center)</option>
+                <option value="3">Belmonte (Betty Go)</option>
+                <option value="7">Gilmore</option>
+                <option value="7">J.Ruiz</option>
+                <option value="7">V.Mapa</option>
+                <option value="11">Pureza</option>
+                <option value="11">Legarda</option>
+                <option value="11">Recto</option>
               </select>
             <br>
           <span id="station-label"><label for="goingTo">Going To:</label></span>
             <br>
               <select class="form-control" id="goingTo">
-                <option value="15">Choose a station...</option>
-                <option value="15">Santolan</option>
-                <option value="15">Katipunan</option>
-                <option value="15">Anonas</option>
-                <option value="15">Cubao</option>
-                <option value="15">Belmonte</option>
-                <option value="15">Gilmore</option>
-                <option value="15">J.Ruiz</option>
-                <option value="15">V.Mapa</option>
-                <option value="15">Pureza</option>
-                <option value="15">Legarda</option>
-                <option value="15">Recto</option>
+                <option value="0">Choose a station...</option>
+                <option value="0">Santolan</option>
+                <option value="0">Katipunan</option>
+                <option value="0">Anonas</option>
+                <option value="3">Cubao (Araneta Center)</option>
+                <option value="3">Belmonte (Betty Go)</option>
+                <option value="7">Gilmore</option>
+                <option value="7">J.Ruiz</option>
+                <option value="7">V.Mapa</option>
+                <option value="11">Pureza</option>
+                <option value="11">Legarda</option>
+                <option value="11">Recto</option>
               </select>
-              
-              <button onclick="calculateFare()" class="btn btn-outline-success" id="compute">Regular Fare</button>
+
+              <br>
+
+                    <button onclick="calculateFare()" class="btn btn-outline-success" id="compute">Regular Fare</button>
               <button onclick="discountFare()" class="btn btn-outline-primary" id="compute">Discounted Fare</button>
-             <img id="card" src="https://mrt3.com/images/SINGLE.png">
              </center>
-      </div>
 
-     </div>
+            </div>
+            </div>
 
-      <div class="col-md-4" style="background-color: #04175c; color: white; height: 600px;">
-        <script>  
-        document.write("<h2>Ticket Price:</h2>");
-        </script>
-
-        <br><br>
-        <center>
             <br>
-            <p id="DisplayAns"></p>
-        </center>
-        <script>
 
-        function calculateFare(){
-          let leavingFrom, goingTo, basefare, distance, fare;
-          leavingFrom = document.getElementById("leavingFrom").value;
-          goingTo = document.getElementById("goingTo").value;
-          basefare = 30;
-          distance = goingTo - leavingFrom;
-          fare = distance + basefare; 
-          
-          document.getElementById("DisplayAns").innerHTML = fare + ".00";
-    }
-        function discountFare(){
-          let leavingFrom, goingTo, basefare, distance, disc_fare, fare;
-          leavingFrom = document.getElementById("leavingFrom").value;
-          goingTo = document.getElementById("goingTo").value;
-          basefare = 30;
-          distance = goingTo - leavingFrom;
-          disc_fare = .80 * (distance + basefare) ; 
-          fare = disc_fare.toFixed(2);
-          
-          document.getElementById("DisplayAns").innerHTML = fare;
-    }
-      </script>
+            <div class="col-md-4 fare-box">
+                <h2>Ticket Price:</h2>
+                <p id="DisplayAns">₱0.00</p>
+            </div>
+        </div>
+    </div>
+       
+<script>  
+        document.write("<h2>Ticket Price:</h2>");
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let leavingSelect = document.getElementById("leavingFrom");
+            let goingSelect = document.getElementById("goingTo");
+            
+            stations.forEach((station, index) => {
+                let option1 = new Option(station, index + 1);
+                let option2 = new Option(station, index + 1);
+                leavingSelect.add(option1);
+                goingSelect.add(option2);
+            });
+        });
+
+        function calculateFare() {
+            let leaving = parseInt(document.getElementById("leavingFrom").value);
+            let going = parseInt(document.getElementById("goingTo").value);
+            
+            if (isNaN(leaving) || isNaN(going) || leaving === going) {
+                document.getElementById("DisplayAns").innerHTML = "Invalid Selection";
+                return;
+            }
+            
+            let baseFare = 13;
+            let additionalFare = Math.abs(going - leaving) * 2;
+            let totalFare = baseFare + additionalFare;
+            
+            document.getElementById("DisplayAns").innerHTML = `₱${totalFare}.00`;
+        }
         
-      </div>
-    </center>      
-     
-    </div>
-    </div>
-     <hr>
+        function discountFare() {
+            calculateFare();
+            let fareText = document.getElementById("DisplayAns").innerHTML;
+            if (fareText !== "Invalid Selection") {
+                let fare = parseFloat(fareText.replace("₱", "")) * 0.8;
+                document.getElementById("DisplayAns").innerHTML = `₱${fare.toFixed(2)}`;
+            }
+        }
+    </script>
 
 </body>
 </html>
-
-
-
