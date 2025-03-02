@@ -8,15 +8,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
 <style>
-  body {font-family: Rockwell; background-color: #f8f9fa; position: relative; width: 100%; display: block; background-image: url(bg.jpg); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;}
-  #map {height: 400px; width: 100%; max-width: 600px; display: block; margin: 20px auto;}
+  body {font-family: "Darumadrop One"; background-color: #f8f9fa; position: relative; width: 100%; display: block; background-image: url(bg.jpg); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;}
+  #map {height: 400px; width: 750px; display: block; margin: 20px auto;}
   #station-label {background-color: black; color: white; padding: 5px; display: inline-block;}
   label {width: 100%; max-width: 320px; margin-top: 5px; display: block;}
   select {width: 100%; max-width: 320px; background-color: #8ff2f7;}
   #DisplayAns {font-size: 40px; font-weight: bold; color: white; background: #7941bf; padding: 10px; display: inline-block;}
+  .contact-box {text-align: center; padding: 20px;}
   #logo {width: 60px; height: 40px;}
   .fare-box {background-color: #36185c; color: white; padding: 20px; border-radius: 10px;}
-  .feedback-box {background-color: #36185c; color: white; padding: 20px; border-radius: 10px; text-align: center;}
+  .feedback-box {background-color: #36185c; color: white; padding: 10px; border-radius: 10px; text-align: center;}
+   @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap')
 </style>
 </head>
 
@@ -117,7 +119,7 @@
 
     function calculateFare() {
        let leaving = parseInt(document.getElementById("leavingFrom").value);
-       let going = parseInt(document.getElementById("goingTo").value);
+       let going = parseInt(document.getElementById("goingTo").value);       
             
        if (isNaN(leaving) || isNaN(going) || leaving === going) {
        document.getElementById("DisplayAns").innerHTML = "Invalid Selection"; return;
@@ -139,6 +141,19 @@
             }
         }
 </script>
+
+    <div class="container contact-box">
+        <p>For any assistance, feel free to contact us.</p>
+        <p>
+            <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com" class="fa fa-instagram"></a>
+        </p>
+        <p>
+            <b><i>47 East, Solana Suites, #47 Estaban Abada Street, Brgy. Loyola Heights, Quezon City, Philippines 1108</i></b>
+        </p>
+        <br>
+        <span>&copy; 2025 A. Lusica & L. Silleza</span>
+    </div>
 
 </body>
 </html>
